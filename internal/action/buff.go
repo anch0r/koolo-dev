@@ -57,7 +57,7 @@ func Buff() {
 	ctx := context.Get()
 	ctx.SetLastAction("Buff")
 
-	if ctx.Data.PlayerUnit.Area.IsTown() || time.Since(ctx.LastBuffAt) < time.Second*30 {
+	if ctx.Data.PlayerUnit.Area.IsTown() {
 		return
 	}
 

@@ -39,6 +39,8 @@ func (c Countess) Run(parameters *RunParameters) error {
 		return err
 	}
 
+	action.Buff()
+
 	areas := []area.ID{
 		area.ForgottenTower,
 		area.TowerCellarLevel1,

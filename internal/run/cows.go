@@ -117,6 +117,8 @@ func (a Cows) Run(parameters *RunParameters) error {
 		return err
 	}
 
+	action.Buff()
+
 	return action.ClearCurrentLevelCows(a.ctx.CharacterCfg.Game.Cows.OpenChests, data.MonsterAnyFilter())
 }
 

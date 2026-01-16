@@ -52,7 +52,7 @@ func (a AncientTunnels) Run(parameters *RunParameters) error {
 		return err
 	}
 	action.OpenTPIfLeader()
-
+	action.Buff()
 	// Clear Ancient Tunnels
 
 	return action.ClearCurrentLevel(openChests, filter)

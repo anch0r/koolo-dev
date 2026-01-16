@@ -66,6 +66,8 @@ func (p Pindleskin) Run(parameters *RunParameters) error {
 		return err
 	}
 
+	action.Buff()
+
 	_ = action.MoveToCoords(pindleSafePosition)
 
 	return p.ctx.Char.KillPindle()

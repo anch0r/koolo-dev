@@ -74,6 +74,8 @@ func (s *Baal) Run(parameters *RunParameters) error {
 		return err
 	}
 
+	action.Buff()
+
 	if s.ctx.CharacterCfg.Game.Baal.ClearFloors || s.clearMonsterFilter != nil {
 		action.ClearCurrentLevel(false, filter)
 	}

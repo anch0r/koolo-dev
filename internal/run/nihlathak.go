@@ -73,6 +73,8 @@ func (n Nihlathak) runStandard(parameters *RunParameters) error {
 		}
 	}
 
+	action.Buff()
+
 	// Move to Halls Of Vaught
 	if err = action.MoveToArea(area.HallsOfVaught); err != nil {
 		return err
@@ -89,7 +91,8 @@ func (n Nihlathak) runStandard(parameters *RunParameters) error {
 	action.MoveToCoords(o.Position)
 
 	// Try to position in the safest corner
-	action.MoveToCoords(n.findBestCorner(o.Position))
+	// no need to do this, just go straightly and kill him
+	//action.MoveToCoords(n.findBestCorner(o.Position))
 
 	// Disable item pickup before the fight
 	n.ctx.DisableItemPickup()

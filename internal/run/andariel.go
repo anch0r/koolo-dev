@@ -160,6 +160,8 @@ func (a Andariel) Run(parameters *RunParameters) error {
 		return err
 	}
 
+	action.Buff()
+
 	err = action.MoveToArea(area.CatacombsLevel3)
 	action.MoveToArea(area.CatacombsLevel4)
 	if err != nil {
