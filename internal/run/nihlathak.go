@@ -73,7 +73,11 @@ func (n Nihlathak) runStandard(parameters *RunParameters) error {
 		}
 	}
 
-	action.Buff()
+	//special handler for barb
+	ctx := context.Get()
+	if ctx.CharacterCfg.Character.Class == "barb_leveling" || ctx.CharacterCfg.Character.Class == "whirlwind_barb" {
+		action.Buff()
+	}
 
 	// Move to Halls Of Vaught
 	if err = action.MoveToArea(area.HallsOfVaught); err != nil {

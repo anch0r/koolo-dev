@@ -66,8 +66,11 @@ func (p Pindleskin) Run(parameters *RunParameters) error {
 		return err
 	}
 
-	action.Buff()
-
+	//special handler for barb
+	ctx := context.Get()
+	if ctx.CharacterCfg.Character.Class == "barb_leveling" || ctx.CharacterCfg.Character.Class == "whirlwind_barb" {
+		action.Buff()
+	}
 	_ = action.MoveToCoords(pindleSafePosition)
 
 	return p.ctx.Char.KillPindle()

@@ -82,7 +82,11 @@ func (d *Diablo) Run(parameters *RunParameters) error {
 		return err
 	}
 
-	action.Buff()
+	//special handler for barb
+	ctx := context.Get()
+	if ctx.CharacterCfg.Character.Class == "barb_leveling" || ctx.CharacterCfg.Character.Class == "whirlwind_barb" {
+		action.Buff()
+	}
 
 	// We move directly to Diablo spawn position if StartFromStar is enabled, not clearing the path
 	d.ctx.Logger.Debug(fmt.Sprintf("StartFromStar value: %t", d.ctx.CharacterCfg.Game.Diablo.StartFromStar))

@@ -52,7 +52,12 @@ func (a AncientTunnels) Run(parameters *RunParameters) error {
 		return err
 	}
 	action.OpenTPIfLeader()
-	action.Buff()
+
+	//special handler for barb
+	ctx := context.Get()
+	if ctx.CharacterCfg.Character.Class == "barb_leveling" || ctx.CharacterCfg.Character.Class == "whirlwind_barb" {
+		action.Buff()
+	}
 	// Clear Ancient Tunnels
 
 	return action.ClearCurrentLevel(openChests, filter)

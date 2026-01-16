@@ -81,6 +81,12 @@ func (m Mephisto) Run(parameters *RunParameters) error {
 		return err
 	}
 
+	//special handler for barb
+	ctx := context.Get()
+	if ctx.CharacterCfg.Character.Class == "barb_leveling" || ctx.CharacterCfg.Character.Class == "whirlwind_barb" {
+		action.Buff()
+	}
+
 	if m.clearMonsterFilter != nil {
 		if err = action.ClearCurrentLevel(m.ctx.CharacterCfg.Game.Mephisto.OpenChests, m.clearMonsterFilter); err != nil {
 			return err

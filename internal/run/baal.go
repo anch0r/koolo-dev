@@ -74,7 +74,11 @@ func (s *Baal) Run(parameters *RunParameters) error {
 		return err
 	}
 
-	action.Buff()
+	//special handler for barb
+	ctx := context.Get()
+	if ctx.CharacterCfg.Character.Class == "barb_leveling" || ctx.CharacterCfg.Character.Class == "whirlwind_barb" {
+		action.Buff()
+	}
 
 	if s.ctx.CharacterCfg.Game.Baal.ClearFloors || s.clearMonsterFilter != nil {
 		action.ClearCurrentLevel(false, filter)
