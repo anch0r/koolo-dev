@@ -108,7 +108,7 @@ func (m Mephisto) Run(parameters *RunParameters) error {
 		action.Stash(false)
 		action.ReviveMerc()
 		action.Repair()
-		action.VendorRefill(true, true)
+		action.VendorRefill(action.VendorRefillOpts{ForceRefill: true, SellJunk: true, BuyConsumables: true})
 
 		err = action.UsePortalInTown()
 		if err != nil {
@@ -135,6 +135,8 @@ func (m Mephisto) Run(parameters *RunParameters) error {
 	if err != nil {
 		return err
 	}
+
+	action.ItemPickup(30)
 
 	if m.ctx.CharacterCfg.Game.Mephisto.OpenChests || m.ctx.CharacterCfg.Game.Mephisto.KillCouncilMembers {
 		if err = action.ClearCurrentLevel(m.ctx.CharacterCfg.Game.Mephisto.OpenChests, m.CouncilMemberFilter()); err != nil {
