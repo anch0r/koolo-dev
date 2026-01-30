@@ -24,7 +24,7 @@ func (s Smiter) ShouldIgnoreMonster(m data.Monster) bool {
 }
 
 func (f Smiter) CheckKeyBindings() []skill.ID {
-	requireKeybindings := []skill.ID{skill.Smite, skill.HolyShield, skill.TomeOfTownPortal, skill.Fanaticism, skill.Vigor, skill.ResistLightning}
+	requireKeybindings := []skill.ID{skill.Smite, skill.HolyShield, skill.TomeOfTownPortal, skill.Fanaticism}
 	missingKeybindings := make([]skill.ID, 0)
 
 	for _, cskill := range requireKeybindings {
@@ -132,7 +132,7 @@ func (f Smiter) getUberMephAura() skill.ID {
 	case "resist_lightning", "":
 		preferredAura = skill.ResistLightning
 	default:
-		preferredAura = skill.ResistLightning
+		preferredAura = skill.Salvation
 	}
 
 	if preferredAura != 0 {
@@ -140,11 +140,6 @@ func (f Smiter) getUberMephAura() skill.ID {
 			return preferredAura
 		}
 	}
-
-	if _, found := f.Data.KeyBindings.KeyBindingForSkill(skill.ResistLightning); found {
-		return skill.ResistLightning
-	}
-
 	return skill.Fanaticism
 }
 
